@@ -7,8 +7,8 @@ class CreateShares < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :sharable_id
-    add_index :user_id
-    add_index :sharable_type
+    add_index :shares,:sharable_id
+    add_index :shares,:user_id
+    add_index :shares,:sharable_type
   end
 end

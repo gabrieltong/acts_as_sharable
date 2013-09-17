@@ -12,7 +12,7 @@ class ActsAsSharableMigrationGenerator < Rails::Generators::Base
   end
 
   def manifest
-    migration_template 'migration.rb', 'db/migrate/acts_as_sharable.rb'
+    migration_template 'migration.rb', 'db/migrate/create_shares.rb'
     copy_file '../share.rb', 'app/models/share.rb'
     inject_into_file(
       'app/models/user.rb',
