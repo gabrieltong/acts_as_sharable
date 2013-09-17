@@ -4,10 +4,9 @@ module ActsAsSharable
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def acts_as_commentable
-      before_save do |record|
-        pp "#{record.id}.#{record.title}"
-      end
+    def acts_as_sharable
+      has_many :shares,:as=>:sharable
+      before_destroy { |record| record.shares.destroy_all }
       include ActsAsSharable::LocalInstanceMethods
       extend ActsAsSharable::SingletonMethods
     end
@@ -15,15 +14,11 @@ module ActsAsSharable
 
   # This module contains class methods
   module SingletonMethods
-    def size2
-      self.count
-    end
+    
   end
 
   module LocalInstanceMethods
-    def name2
-      "#{title} #{title}"
-    end
+    
   end
 end
 
