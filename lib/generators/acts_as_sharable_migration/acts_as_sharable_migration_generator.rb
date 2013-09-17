@@ -1,4 +1,4 @@
-class ActsAsSharableMigrationGenerator < Rails::Generators::NamedBase
+class ActsAsSharableMigrationGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
   source_root File.expand_path('../templates', __FILE__)
 
@@ -14,5 +14,10 @@ class ActsAsSharableMigrationGenerator < Rails::Generators::NamedBase
   def manifest
     migration_template 'migration.rb', 'db/migrate/acts_as_sharable.rb'
     copy_file 'share.rb', 'app/models/share.rb'
+    inject_into_file(
+      'app/models/user.rb',
+      "has_many :shares\n\n",
+      after: "class User < ActiveRecord::Base\n"
+    )
   end
 end
