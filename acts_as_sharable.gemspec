@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = ActsAsSharable::VERSION
   s.authors     = ["Gabriel Tong"]
   s.email       = ["tongyangmath@gmail.com"]
-  s.homepage    = "www.railsg.com"
+  s.homepage    = "http://www.railsg.com"
   s.summary     = "Summary of ActsAsSharable."
   s.description = "Description of ActsAsSharable."
 
